@@ -20,11 +20,6 @@ namespace Ejercicio2_1
             InitializeComponent();
         }
 
-        private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
-        {
-
-        }
-
         private async void txtRegion_SelectedIndexChanged(object sender, EventArgs e)
         {
             String[] Continentes = new String[]{ "Africa", "Americas", "Asia", "Europe", "Oceania" };
@@ -36,7 +31,6 @@ namespace Ejercicio2_1
                 var objetoPicker = (Picker)sender;
                 if (objetoPicker.SelectedIndex >= 0)
                 {
-                    txtBuscar.IsEnabled = true;
                     List<Modelo.MRegion> PaisesRegion = new List<Modelo.MRegion>();
                     PaisesRegion = await Controlador.CRegion.getPaises(Continentes[objetoPicker.SelectedIndex]);
                     txtListaRegion.ItemsSource = PaisesRegion;

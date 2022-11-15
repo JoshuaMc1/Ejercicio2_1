@@ -8,16 +8,6 @@
              BackgroundColor="#E0777D"
              NavigationPage.HasNavigationBar="False">
     <StackLayout>
-        <Frame
-            BackgroundColor="Beige"
-            HeightRequest="20">
-            <SearchBar
-                x:Name="txtBuscar"
-                Placeholder="Buscar"
-                TextColor="Black"
-                SearchButtonPressed="SearchBar_SearchButtonPressed"
-                IsEnabled="False"/>
-        </Frame>
         <StackLayout
             Padding="15">
             <Frame
