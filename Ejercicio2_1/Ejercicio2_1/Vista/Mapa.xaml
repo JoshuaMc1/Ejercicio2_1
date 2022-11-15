@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ejercicio2_1.Vista.Mapa"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps">
+    <ContentPage.Content>
+        <StackLayout>
+            <maps:Map 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand" 
+                x:Name="txtMapa" 
+                IsShowingUser="True" />
+            <Label 
+                x:Name="txtCapital"   
+                Text="{Binding capital}" 
+                IsVisible="false" 
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold"/>
+            <Label 
+                x:Name="txtPais"   
+                Text="{Binding pais}" 
+                IsVisible="false" 
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold"/>
+            <Label 
+                x:Name="txtLatitud"   
+                Text="{Binding latitud}" 
+                IsVisible="false" 
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold"/>
+            <Label 
+                x:Name="txtLongitud"  
+                Text="{Binding longitud}" 
+                IsVisible="false" 
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold"/>
+            <Label 
+                x:Name="txtPoblacion" 
+                IsVisible="false" 
+                Text="{Binding poblacion}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ejercicio2_1.MainPage"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:fftrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             BackgroundColor="#E0777D"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout>
+        <Frame
+            BackgroundColor="Beige"
+            HeightRequest="20">
+            <SearchBar
+                x:Name="txtBuscar"
+                Placeholder="Buscar"
+                TextColor="Black"
+                SearchButtonPressed="SearchBar_SearchButtonPressed"
+                IsEnabled="False"/>
+        </Frame>
+        <StackLayout
+            Padding="15">
+            <Frame
+                BackgroundColor="Bisque"
+                CornerRadius="15">
+                <StackLayout>
+                    <Label
+                        Text="Seleccione una región"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        FontSize="18"/>
+                    <Picker
+                        x:Name="txtRegion"
+                        Title="Seleccione una opción"
+                        SelectedIndexChanged="txtRegion_SelectedIndexChanged">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Africa</x:String>
+                                <x:String>Americas</x:String>
+                                <x:String>Asia</x:String>
+                                <x:String>Europe</x:String>
+                                <x:String>Oceania</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                    <CollectionView 
+                        x:Name="txtListaRegion"
+                        SelectionMode="Single"
+                        SelectionChanged="txtListaRegion_SelectionChanged">
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout
+                                    Padding="5">
+                                    <Frame
+                                        Padding="5"
+                                        BackgroundColor="Beige"
+                                        CornerRadius="8">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <ffimageloadingsvg:SvgCachedImage
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Grid.ColumnSpan="2"
+                                                Source="{Binding flags.svg}" 
+                                                ErrorPlaceholder="Error al cargar"
+                                                HeightRequest="180"
+                                                Aspect="AspectFill" 
+                                                CacheDuration="30" 
+                                                RetryCount="10" 
+                                                RetryDelay="10" 
+                                                DownsampleToViewSize="true"
+                                                LoadingPriority="Highest"/>
+                                            <StackLayout
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Grid.ColumnSpan="2">
+                                                <Label
+                                                    Text="{Binding translations.spa.common}"
+                                                    TextColor="Black"
+                                                    FontAttributes="Bold"
+                                                    FontSize="22"
+                                                    HorizontalOptions="Center"/>
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width=".5*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label
+                                                        Grid.Row="0"
+                                                        Grid.Column="0"
+                                                        Text="Capital: "
+                                                        TextColor="Black"
+                                                        FontAttributes="Bold"
+                                                        FontSize="18"/>
+                                                    <Label
+                                                        Grid.Row="0"
+                                                        Grid.Column="1"
+                                                        Text="{Binding capital[0]}"
+                                                        TextColor="Black"
+                                                        FontAttributes="Italic"
+                                                        FontSize="18"/>
+
+                                                    <Label
+                                                        Grid.Row="1"
+                                                        Grid.Column="0"
+                                                        Text="Sub-region: "
+                                                        TextColor="Black"
+                                                        FontAttributes="Bold"
+                                                        FontSize="18"/>
+                                                    <Label
+                                                        Grid.Row="1"
+                                                        Grid.Column="1"
+                                                        Text="{Binding subregion}"
+                                                        TextColor="Black"
+                                                        FontAttributes="Italic"
+                                                        FontSize="18"/>
+
+                                                    <Label
+                                                        Grid.Row="2"
+                                                        Grid.Column="0"
+                                                        Text="Estado: "
+                                                        TextColor="Black"
+                                                        FontAttributes="Bold"
+                                                        FontSize="18"/>
+                                                    <Label
+                                                        Grid.Row="2"
+                                                        Grid.Column="1"
+                                                        Text="{Binding status}"
+                                                        TextColor="Black"
+                                                        FontAttributes="Italic"
+                                                        FontSize="18"/>
+                                                    <Label
+                                                        Grid.Row="3"
+                                                        Grid.Column="0"
+                                                        Text="Poblacion: "
+                                                        TextColor="Black"
+                                                        FontAttributes="Bold"
+                                                        FontSize="18"/>
+                                                    <Label
+                                                        Grid.Row="3"
+                                                        Grid.Column="1"
+                                                        Text="{Binding population, StringFormat='{0:N0}'}"
+                                                        FontAttributes="Italic"
+                                                        FontSize="18"
+                                                        TextColor="Blue"/>
+                                                </Grid>
+                                            </StackLayout>
+                                        </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
